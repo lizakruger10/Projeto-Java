@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
+import view.TelaInicialFrame; 
+import view.TelaPrincipalFrame;
 
 /**
  *
@@ -23,7 +25,7 @@ public class ControllerLogin {
         this.view = view;
     }
     
-    public void loginAluno() {
+    public void loginUsuario() {
     Usuario user = new Usuario(null, 
                                 view.getTxt_usuario_login().getText(),
                                 view.getTxt_senha_login().getText());
@@ -36,6 +38,12 @@ public class ControllerLogin {
         
         if (rs.next()) {
             JOptionPane.showMessageDialog(view, "Login efetuado!");
+             TelaPrincipalFrame principal = new TelaPrincipalFrame();
+                principal.setVisible(true);
+
+                
+                view.dispose();
+            
         } else {
             JOptionPane.showMessageDialog(view, "Usuário ou senha inválidos!");
         }
@@ -47,3 +55,4 @@ public class ControllerLogin {
 }
 
 }
+
