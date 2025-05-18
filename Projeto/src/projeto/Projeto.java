@@ -4,6 +4,7 @@
  */
 package projeto;
 
+import view.TelaInicialFrame;
 /**
  *
  * @author Elizabeth
@@ -14,7 +15,8 @@ public class Projeto {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        TelaInicialFrame lf = new TelaInicialFrame();
+        lf.setVisible(true);
     }
     
 }
