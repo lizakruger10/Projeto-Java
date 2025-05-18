@@ -33,6 +33,10 @@ public class ControllerCadastro {
             UsuarioDAO dao = new UsuarioDAO(conn);
             dao.inserir(user);
             JOptionPane.showMessageDialog(view, "Usuário Cadastrado");
+            TelaPrincipalFrame principal = new TelaPrincipalFrame();
+                principal.setVisible(true);
+
+                view.dispose();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(view, "Erro de conexão!");
         }
