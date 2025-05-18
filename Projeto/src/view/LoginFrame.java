@@ -157,7 +157,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void bt_loginActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        c.loginAluno();
+        c.loginUsuario();
     }                                        
 
     /**
