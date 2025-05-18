@@ -20,23 +20,23 @@ public class UsuarioDAO {
         this.conn = conn;
     }
     
-    public ResultSet consultar(Usuario usuario) throws SQLException{
-        String sql = "select * from usuario where usuario = ? and senha = ?";
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, usuario.getUsuario());
-        statement.setString(2, usuario.getSenha());
-        statement.execute();
-        ResultSet resultado = statement.getResultSet();
-        return resultado;
-    }
+    public ResultSet consultar(Usuario user) throws SQLException {
+    String sql = "SELECT * FROM \"user\" WHERE usuario = ? AND senha = ?";
+    PreparedStatement statement = conn.prepareStatement(sql);
+    statement.setString(1, user.getUsuario());
+    statement.setString(2, user.getSenha());
+    return statement.executeQuery();
+}
     
-    public void inserir(Usuario usuario) throws SQLException{
-        String sql = "insert into aluno(nome, usuario, senha) values ('"
-                     + usuario.getNome()    + "' , '"
-                     + usuario.getUsuario() + "' , '"
-                     + usuario.getSenha()   + "')";
+    public void inserir(Usuario user) throws SQLException{
+        String sql = "INSERT INTO \"user\" (nome, usuario, senha) VALUES (?, ?, ?)";
         PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1, user.getNome());
+        statement.setString(2, user.getUsuario());
+        statement.setString(3, user.getSenha());
         statement.execute();
         conn.close();
+
     }
 }
+
