@@ -30,23 +30,6 @@ public class PlaylistDAO {
         stmt.close();
     }
 
-    public void adicionarMusicaNaPlaylist(int playlistId, int musicaId) throws SQLException {
-        String sql = "INSERT INTO playlist_musica (playlist_id, musica_id) VALUES (?, ?)";
-        PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, playlistId);
-        stmt.setInt(2, musicaId);
-        stmt.executeUpdate();
-        stmt.close();
-    }
-
-    public void removerMusicaDaPlaylist(int playlistId, int musicaId) throws SQLException {
-        String sql = "DELETE FROM playlist_musica WHERE playlist_id = ? AND musica_id = ?";
-        PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, playlistId);
-        stmt.setInt(2, musicaId);
-        stmt.executeUpdate();
-        stmt.close();
-    }
 
     public void editar(String nomeAntigo, String nomeNovo) throws SQLException {
         String sql = "UPDATE playlist SET nome = ? WHERE nome = ?";
@@ -60,7 +43,7 @@ public class PlaylistDAO {
         }
     }
 
-    
+    // Excluir playlist
     public void excluir(String nome) throws SQLException {
         String sql = "DELETE FROM playlist WHERE nome = ?";
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
