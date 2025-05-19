@@ -70,6 +70,9 @@ Para conectar ao banco de dados, foi utilizado o PGAdmin, que é uma ferramenta 
  músicas (que tem as informações das músicas):   
 ![image](https://github.com/user-attachments/assets/a702431d-1781-4ce4-842a-9e70918c2f0e)  
  e playlist (que tem as informações das playlists):  
- ![image](https://github.com/user-attachments/assets/0817714e-b3d3-4a01-b69d-01e18d6741f9)  
+ ![image](https://github.com/user-attachments/assets/0817714e-b3d3-4a01-b69d-01e18d6741f9)   
+
+ Para fazer as buscas no banco de dados, foi utilizado comandos em SQL. Alguns comandos utilizados foram:  
+ 
 
 
