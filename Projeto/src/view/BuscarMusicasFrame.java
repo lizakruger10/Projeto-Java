@@ -1,89 +1,37 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
-import controller.ControllerMusica; // Importe o ControllerMusica
+import controller.ControllerMusica;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListModel; // Importe DefaultListModel
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-/**
- *
- * @author Elizabeth
- */
+
 public class BuscarMusicasFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form BuscarMusicasFrame
-     */
-    
     private ControllerMusica controllerMusica;
+    private DefaultListModel<String> listModelMusicasString; 
 
-    public BuscarMusicasFrame() {
-        this.controllerMusica = controllerMusica;
-        initComponents();
-        inicializarLista(); // Inicialize o modelo da lista
-        configurarListeners();
+    public BuscarMusicasFrame(ControllerMusica controller) {
+        this.controllerMusica = controller; 
+        this.listModelMusicasString = new DefaultListModel<>(); 
+        
+        initComponents(); 
+        
+        jList1.setModel(listModelMusicasString); 
+
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setTitle("Buscar Músicas");
     }
-
+    
     public void setControllerMusica(ControllerMusica controllerMusica) {
         this.controllerMusica = controllerMusica;
     }
-    
-
-    private void inicializarLista() {
-        jList1.setModel(new DefaultListModel<>()); 
-    }
-
-    private void configurarListeners() {
-        bt_buscar_musica.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                try {
-                    controllerMusica.buscarMusicas();
-                } catch (SQLException ex) {
-                    Logger.getLogger(BuscarMusicasFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-
-        txt_buscar_musicas.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    try {
-                        controllerMusica.buscarMusicas();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(BuscarMusicasFrame.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-        });
-
-        txt_buscar_musicas.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                try {
-                    controllerMusica.buscarMusicas();
-                } catch (SQLException ex) {
-                    Logger.getLogger(BuscarMusicasFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
-    
-
-    
     
 
     /**
@@ -133,9 +81,19 @@ public class BuscarMusicasFrame extends javax.swing.JFrame {
 
         bt_curtir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bt_curtir.setText("Curtir");
+        bt_curtir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_curtirActionPerformed(evt);
+            }
+        });
 
         bt_descurtir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bt_descurtir.setText("Descurtir");
+        bt_descurtir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_descurtirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,38 +141,91 @@ public class BuscarMusicasFrame extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void txt_buscar_musicasActionPerformed(java.awt.event.ActionEvent evt) {                                                   
-         try {
-            // TODO add your handling code here:
-            controllerMusica.buscarMusicas();
-        } catch (SQLException ex) {
-            Logger.getLogger(BuscarMusicasFrame.class.getName()).log(Level.SEVERE, null, ex);
+            if (this.controllerMusica != null) { // Adicionada verificação
+            bt_buscar_musicaActionPerformed(evt);
         }
     }                                                  
 
     private void bt_buscar_musicaActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-          try {
-            // TODO add your handling code here:
+                  if (controllerMusica == null) {
+            JOptionPane.showMessageDialog(this, "Controller não configurado.", "Erro Interno", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
             controllerMusica.buscarMusicas();
         } catch (SQLException ex) {
-            Logger.getLogger(BuscarMusicasFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BuscarMusicasFrame.class.getName()).log(Level.SEVERE, "Erro SQL ao buscar músicas", ex);
+            JOptionPane.showMessageDialog(this, "Erro ao buscar músicas: " + ex.getMessage(), "Erro de Banco de Dados", JOptionPane.ERROR_MESSAGE);
         }
+
     }                                                
 
-     
-                                                   
+    private void bt_curtirActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+        if (controllerMusica == null) {
+            JOptionPane.showMessageDialog(this, "Controller não configurado.", "Erro Interno", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        int selectedIndex = jList1.getSelectedIndex(); 
+        
+        if (selectedIndex != -1) { 
+            String selectedValue = jList1.getSelectedValue();
+            if (selectedValue != null && !selectedValue.equals("Nenhuma música encontrada.") && !selectedValue.equals("Digite algo para buscar.")) {
+                try {
+                    controllerMusica.curtirMusica(selectedIndex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(BuscarMusicasFrame.class.getName()).log(Level.SEVERE, "Erro SQL ao curtir música", ex);
+                    JOptionPane.showMessageDialog(this, "Erro ao curtir música: " + ex.getMessage(), "Erro de Banco de Dados", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione uma música para curtir.", "Nenhuma Música Selecionada", JOptionPane.WARNING_MESSAGE);
+        }
+    }                                         
 
+    private void bt_descurtirActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        // TODO add your handling code here:
+          if (controllerMusica == null) {
+            JOptionPane.showMessageDialog(this, "Controller não configurado.", "Erro Interno", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int selectedIndex = jList1.getSelectedIndex(); 
+
+        if (selectedIndex != -1) {
+            String selectedValue = jList1.getSelectedValue();
+             if (selectedValue != null && !selectedValue.equals("Nenhuma música encontrada.") && !selectedValue.equals("Digite algo para buscar.")) {
+                try {
+                    controllerMusica.descurtirMusica(selectedIndex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(BuscarMusicasFrame.class.getName()).log(Level.SEVERE, "Erro SQL ao descurtir música", ex);
+                    JOptionPane.showMessageDialog(this, "Erro ao descurtir música: " + ex.getMessage(), "Erro de Banco de Dados", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione uma música para descurtir.", "Nenhuma Música Selecionada", JOptionPane.WARNING_MESSAGE);
+        }
+    }                                            
+
+        public DefaultListModel<String> getListModelMusicasString() {
+        return listModelMusicasString;
+    }
+                                                   
+    
+                                                   
     public JTextField getTxtBuscarMusicas() {
         return txt_buscar_musicas;
     }
 
-    public JList<String> getListaResultados() {
+    // Getter para a JList (de Strings)
+    public JList<String> getListaResultadosString() {
         return jList1;
     }
 
     public JButton getBt_buscar_musica() {
         return bt_buscar_musica;
-    }
     
+    }
 
     /**
      * @param args the command line arguments
