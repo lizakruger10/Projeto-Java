@@ -79,7 +79,9 @@ Para conectar ao banco de dados, foi utilizado o PGAdmin, que é uma ferramenta 
  "UPDATE musicas SET \"Curtiu\" = ?, \"Descurtiu\" = ? WHERE id = ?"; -- Utilizado para atualizar o status da curtida.  
  
 ## Conclusão  
-
+Portanto, o desenvolvimento desse projeto proporcionou uma aplicação funcional inspirada no spotify, que cadastra, faz o login, curte e descurte musicas, cria playlists, por meio de uma interface gráfica. A integração do banco de dados possibilitou armazenar as informações e interações do usuário.  
+No projeto, também, foi implementado a MVC (Model, View e Controller) que ajudou na organização dos códigos.  
+Por fim, o projeto proporcionou um aprendizado de conceitos de orientação a objetos, manipulação de banco de dados e construção de interfaces gráficas. A aplicação se mostrou funcional, validando o modelo proposto e abrindo caminho para futuras evoluções que podem torná-la ainda mais próxima de um serviço real de streaming musical.
 
  
 
