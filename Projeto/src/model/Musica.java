@@ -1,30 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author Elizabeth
- */
 public class Musica {
     private String nome, artista, genero;
     private int anolancamento, id;
-    
-    public Musica() {
-}
+    private boolean curtiu;
+    private boolean descurtiu;
 
-    public Musica(String nome, String artista, String genero, int anolancamento, int id) {
+    public Musica() {
+        this.curtiu = false;
+        this.descurtiu = false;
+    }
+
+    public Musica(String nome, String artista, String genero,
+                  int anolancamento, int id, boolean curtiu, boolean descurtiu) {
         this.nome = nome;
         this.artista = artista;
         this.genero = genero;
         this.anolancamento = anolancamento;
         this.id = id;
+        this.curtiu = curtiu;
+        this.descurtiu = descurtiu;
     }
-
-    
-    
 
     public String getNome() {
         return nome;
@@ -65,16 +61,46 @@ public class Musica {
     public void setId(int id) {
         this.id = id;
     }
-    
+
+    public boolean isCurtiu() {
+        return curtiu;
+    }
+
+    public void setCurtiu(boolean curtiu) {
+        this.curtiu = curtiu;
+    }
+
+    public boolean isDescurtiu() {
+        return descurtiu;
+    }
+
+    public void setDescurtiu(boolean descurtiu) {
+        this.descurtiu = descurtiu;
+    }
+
     @Override
     public String toString() {
-        return "Musica{" +
-                ", nome='" + nome + '\'' +
-                ", artista='" + artista + '\'' +
-                ", genero='" + genero + '\'' +
-                ", anolancamento='" + anolancamento + '\'' +
-                "id=" + id + '\'' +
-                '}';
+        String statusInfo = "";
+        if (curtiu) {
+            statusInfo = " 👍";
+        } else if (descurtiu) {
+            statusInfo = " 👎";
+        }
+        // Esta será a String exibida na JList
+        return String.format("ID: %d | %s - %s [%s] (%d)%s",
+                id, nome, artista, genero, anolancamento, statusInfo);
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Musica musica = (Musica) o;
+        return id == musica.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(id);
+    }
 }
