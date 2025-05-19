@@ -33,7 +33,7 @@ public class ControllerMusica {
 
     private boolean checkDao() {
         if (musicaDAO == null) {
-            JOptionPane.showMessageDialog(null, "DAO de músicas não inicializado. Verifique a conexão com o banco.", "Erro Interno", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Verifique a conexão com o banco de daods.", "Erro ", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
@@ -43,7 +43,7 @@ public class ControllerMusica {
         if (!checkDao()) return;
 
         if (view == null) {
-            JOptionPane.showMessageDialog(null, "A view de busca não está inicializada para esta operação.");
+            JOptionPane.showMessageDialog(null, "A view de busca não está inicializada.");
             return;
         }
 
@@ -53,7 +53,7 @@ public class ControllerMusica {
         this.ultimasMusicasBuscadas.clear();
 
         if (termoBusca.isEmpty()) {
-            modeloListaView.addElement("Digite algo para buscar.");
+            modeloListaView.addElement("");
             view.getListaResultadosString().setModel(modeloListaView); 
             return;
         }
