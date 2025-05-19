@@ -47,17 +47,28 @@ public class PlaylistDAO {
         stmt.close();
     }
 
-    public void deletarPlaylist(int playlistId) throws SQLException {
-        String sql1 = "DELETE FROM playlist_musica WHERE playlist_id = ?";
-        PreparedStatement stmt1 = conexao.prepareStatement(sql1);
-        stmt1.setInt(1, playlistId);
-        stmt1.executeUpdate();
-        stmt1.close();
-
-        String sql2 = "DELETE FROM playlist WHERE id = ?";
-        PreparedStatement stmt2 = conexao.prepareStatement(sql2);
-        stmt2.setInt(1, playlistId);
-        stmt2.executeUpdate();
-        stmt2.close();
+    public void editar(String nomeAntigo, String nomeNovo) throws SQLException {
+        String sql = "UPDATE playlist SET nome = ? WHERE nome = ?";
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, nomeNovo);
+            stmt.setString(2, nomeAntigo);
+            int linhasAfetadas = stmt.executeUpdate();
+            if (linhasAfetadas == 0) {
+                throw new SQLException("Playlist não encontrada: " + nomeAntigo);
+            }
+        }
     }
+
+    // Excluir playlist
+    public void excluir(String nome) throws SQLException {
+        String sql = "DELETE FROM playlist WHERE nome = ?";
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, nome);
+            int linhasAfetadas = stmt.executeUpdate();
+            if (linhasAfetadas == 0) {
+                throw new SQLException("Playlist não encontrada: " + nome);
+            }
+        }
+    }
+
 }
