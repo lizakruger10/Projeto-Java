@@ -13,6 +13,7 @@ public class PlaylistDAO {
     private Connection conexao;
 
     public PlaylistDAO() throws SQLException {
+        Conexao Conexao = new Conexao(); // Instância da classe Conexao
         this.conexao = Conexao.getConnection();
     }
 
