@@ -16,10 +16,8 @@ public class TelaInicialFrame extends javax.swing.JFrame {
     public TelaInicialFrame() {
         initComponents();
     }
-
-   
     @SuppressWarnings("unchecked")
-                         
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         lbl_inicio_bemvindo = new javax.swing.JLabel();
@@ -136,7 +134,7 @@ public class TelaInicialFrame extends javax.swing.JFrame {
 
     private void login_inicioa_loginActionPerformed(java.awt.event.ActionEvent evt) {                                                    
         // TODO add your handling code here:
-        LoginFrame lf = new LoginFrame();
+         LoginFrame lf = new LoginFrame();
         lf.setVisible(true);
         this.setVisible(false);
     }                                                   
