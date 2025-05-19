@@ -72,7 +72,15 @@ Para conectar ao banco de dados, foi utilizado o PGAdmin, que é uma ferramenta 
  e playlist (que tem as informações das playlists):  
  ![image](https://github.com/user-attachments/assets/0817714e-b3d3-4a01-b69d-01e18d6741f9)   
 
- Para fazer as buscas no banco de dados, foi utilizado comandos em SQL. Alguns comandos utilizados foram:  
+ Para fazer as buscas no banco de dados, foi utilizado comandos em SQL dentro do pacote DAO. Alguns comandos utilizados foram:  
+ "INSERT INTO \"user\" (nome, usuario, senha) VALUES (?, ?, ?)"; -- Utilizado para o cadastro de usuários  
+ "INSERT INTO playlist (nome) VALUES (?)"; -- Utilizado para criar uma nova playlist, inserindo o nome dela.  
+ "DELETE FROM playlist WHERE nome = ?"; -- Utilizado para delatar uma playlist.  
+ "UPDATE musicas SET \"Curtiu\" = ?, \"Descurtiu\" = ? WHERE id = ?"; -- Utilizado para atualizar o status da curtida.  
+ 
+## Conclusão  
+
+
  
 
 
