@@ -61,3 +61,8 @@ Atributos: Nome, usuário e senha
 ![image](https://github.com/user-attachments/assets/d5b32929-da2e-4bb9-a466-adbdcf3fe5fb)  
 
  
+
+Para a conexão com o banco de dados funcione, é necessário instalar o jdbc (Java Database Connectivity), que é uma ferramenta de java que permite que aplicações em java se conectem com banco de dados.  
+![image](https://github.com/user-attachments/assets/176d8676-3f27-4dc2-a9f1-eebdda8e8303)  
+
+
