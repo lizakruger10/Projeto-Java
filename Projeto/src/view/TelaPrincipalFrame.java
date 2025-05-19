@@ -1,31 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import controller.ControllerMusica;
 
-/**
- *
- * @author Elizabeth
- */
 public class TelaPrincipalFrame extends javax.swing.JFrame {
-private ControllerMusica controllerMusica;
-    /**
-     * Creates new form TelaPrincipalFrame
-     */
 
     public TelaPrincipalFrame() {
         initComponents();
-        controllerMusica = new ControllerMusica(this);
-        
-    }
-    
-    
-    
-    public BuscarMusicasFrame criarBuscarMusicasFrame(ControllerMusica controller) {
-        return new BuscarMusicasFrame();
     }
 
     /**
@@ -144,10 +124,10 @@ private ControllerMusica controllerMusica;
 
     private void bt_ir_buscar_musicasActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         // TODO add your handling code here:
-    BuscarMusicasFrame buscarMusicasFrame = new BuscarMusicasFrame(); // Crie a view primeiro
-    ControllerMusica controllerMusica = new ControllerMusica(buscarMusicasFrame); // Crie o controller associado à view
-    buscarMusicasFrame.setControllerMusica(controllerMusica); // Associe o controller à view (se necessário)
-    buscarMusicasFrame.setVisible(true);
+   BuscarMusicasFrame buscarView = new BuscarMusicasFrame(null); 
+        ControllerMusica controllerDaBusca = new ControllerMusica(buscarView); 
+        buscarView.setControllerMusica(controllerDaBusca); 
+        buscarView.setVisible(true);
     }                                                    
 
     private void bt_ir_playlistsActionPerformed(java.awt.event.ActionEvent evt) {                                                
