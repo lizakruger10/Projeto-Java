@@ -43,13 +43,13 @@ public class ControllerPlaylist {
         }
     }
 
-    public void excluirPlaylist(int playlistId) {
-        try {
-            playlistDao.deletarPlaylist(playlistId);
-            System.out.println("Playlist excluída com sucesso.");
-        } catch (SQLException e) {
-            System.err.println("Erro ao excluir playlist: " + e.getMessage());
-        }
+     public void editarPlaylist(String nomeAntigo, String nomeNovo) throws SQLException {
+        playlistDao.editar(nomeAntigo, nomeNovo);
     }
+
+    public void excluirPlaylist(String nome) throws SQLException {
+        playlistDao.excluir(nome);
+    }
+    
 }
 
