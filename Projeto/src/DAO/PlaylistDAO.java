@@ -60,7 +60,7 @@ public class PlaylistDAO {
         }
     }
 
-    // Excluir playlist
+    
     public void excluir(String nome) throws SQLException {
         String sql = "DELETE FROM playlist WHERE nome = ?";
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
