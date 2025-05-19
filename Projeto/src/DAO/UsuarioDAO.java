@@ -27,6 +27,14 @@ public class UsuarioDAO {
     statement.setString(2, user.getSenha());
     return statement.executeQuery();
 }
+    public boolean usuarioExiste(String usuario) throws SQLException {
+    String sql = "SELECT 1 FROM \"user\" WHERE usuario = ?";
+    PreparedStatement stmt = conn.prepareStatement(sql);
+    stmt.setString(1, usuario);
+    ResultSet rs = stmt.executeQuery();
+    return rs.next();
+}
+
     
     public void inserir(Usuario user) throws SQLException{
         String sql = "INSERT INTO \"user\" (nome, usuario, senha) VALUES (?, ?, ?)";
