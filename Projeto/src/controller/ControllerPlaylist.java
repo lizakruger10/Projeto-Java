@@ -25,23 +25,6 @@ public class ControllerPlaylist {
         }
     }
 
-    public void adicionarMusica(int playlistId, int musicaId) {
-        try {
-            playlistDao.adicionarMusicaNaPlaylist(playlistId, musicaId);
-            System.out.println("Música adicionada à playlist.");
-        } catch (SQLException e) {
-            System.err.println("Erro ao adicionar música à playlist: " + e.getMessage());
-        }
-    }
-
-    public void removerMusica(int playlistId, int musicaId) {
-        try {
-            playlistDao.removerMusicaDaPlaylist(playlistId, musicaId);
-            System.out.println("Música removida da playlist.");
-        } catch (SQLException e) {
-            System.err.println("Erro ao remover música da playlist: " + e.getMessage());
-        }
-    }
 
      public void editarPlaylist(String nomeAntigo, String nomeNovo) throws SQLException {
         playlistDao.editar(nomeAntigo, nomeNovo);
@@ -52,4 +35,3 @@ public class ControllerPlaylist {
     }
     
 }
-
