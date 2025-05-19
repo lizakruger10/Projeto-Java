@@ -100,6 +100,8 @@ public class BuscarMusicasFrame extends javax.swing.JFrame {
         bt_buscar_musica = new javax.swing.JButton();
         list_resultado = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        bt_curtir = new javax.swing.JButton();
+        bt_descurtir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,6 +131,12 @@ public class BuscarMusicasFrame extends javax.swing.JFrame {
         });
         list_resultado.setViewportView(jList1);
 
+        bt_curtir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_curtir.setText("Curtir");
+
+        bt_descurtir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_descurtir.setText("Descurtir");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -146,7 +154,10 @@ public class BuscarMusicasFrame extends javax.swing.JFrame {
                         .addGap(70, 70, 70)
                         .addComponent(list_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bt_buscar_musica, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bt_buscar_musica, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(bt_curtir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bt_descurtir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
@@ -158,16 +169,21 @@ public class BuscarMusicasFrame extends javax.swing.JFrame {
                 .addComponent(txt_buscar_musicas, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bt_buscar_musica, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bt_buscar_musica, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_curtir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bt_descurtir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(list_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>                        
 
     private void txt_buscar_musicasActionPerformed(java.awt.event.ActionEvent evt) {                                                   
-        try {
+         try {
             // TODO add your handling code here:
             controllerMusica.buscarMusicas();
         } catch (SQLException ex) {
@@ -176,13 +192,16 @@ public class BuscarMusicasFrame extends javax.swing.JFrame {
     }                                                  
 
     private void bt_buscar_musicaActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        try {
+          try {
             // TODO add your handling code here:
             controllerMusica.buscarMusicas();
         } catch (SQLException ex) {
             Logger.getLogger(BuscarMusicasFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }                                                
+
+     
+                                                   
 
     public JTextField getTxtBuscarMusicas() {
         return txt_buscar_musicas;
@@ -232,9 +251,11 @@ public class BuscarMusicasFrame extends javax.swing.JFrame {
      //   });
    // }
 
-   
+    
     // Variables declaration - do not modify                     
     private javax.swing.JButton bt_buscar_musica;
+    private javax.swing.JButton bt_curtir;
+    private javax.swing.JButton bt_descurtir;
     private javax.swing.JList<String> jList1;
     private javax.swing.JLabel lbl_buscar_musicas;
     private javax.swing.JScrollPane list_resultado;
