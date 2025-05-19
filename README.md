@@ -65,4 +65,11 @@ Atributos: Nome, usuário e senha
 Para a conexão com o banco de dados funcione, é necessário instalar o jdbc (Java Database Connectivity), que é uma ferramenta de java que permite que aplicações em java se conectem com banco de dados.  
 ![image](https://github.com/user-attachments/assets/176d8676-3f27-4dc2-a9f1-eebdda8e8303)  
 
+Para conectar ao banco de dados, foi utilizado o PGAdmin, que é uma ferramenta para gerenciamento e administração de banco de dados PostgreSQL. Nessa ferramenta, foram criadas 3 tabelas: user (que tem as informações do usuário):  
+![image](https://github.com/user-attachments/assets/79bd1027-af64-4dcf-a225-8f945877e4fe)  
+ músicas (que tem as informações das músicas):   
+![image](https://github.com/user-attachments/assets/a702431d-1781-4ce4-842a-9e70918c2f0e)  
+ e playlist (que tem as informações das playlists):  
+ ![image](https://github.com/user-attachments/assets/0817714e-b3d3-4a01-b69d-01e18d6741f9)  
+
 
