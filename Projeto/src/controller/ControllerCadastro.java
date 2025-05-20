@@ -43,7 +43,7 @@ public class ControllerCadastro {
             view.dispose();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(view, "Erro ao cadastrar: " + e.getMessage());
-            e.printStackTrace(); // Útil para o console durante testes
+            e.printStackTrace(); 
         }
     }
 }
