@@ -141,7 +141,7 @@ public class BuscarMusicasFrame extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void txt_buscar_musicasActionPerformed(java.awt.event.ActionEvent evt) {                                                   
-            if (this.controllerMusica != null) { // Adicionada verificação
+            if (this.controllerMusica != null) { 
             bt_buscar_musicaActionPerformed(evt);
         }
     }                                                  
