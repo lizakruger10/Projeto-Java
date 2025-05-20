@@ -14,9 +14,7 @@ import javax.swing.JTextField;
  */
 public class LoginFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoginFrame
-     */
+    
     public LoginFrame() {
         initComponents();
         c = new ControllerLogin(this);
