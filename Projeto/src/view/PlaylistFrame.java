@@ -13,9 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class PlaylistFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PlaylistFrame
-     */
+   
     public PlaylistFrame() {
     initComponents();
     initCustomComponents();
@@ -265,23 +263,23 @@ public class PlaylistFrame extends javax.swing.JFrame {
     // Lê o nome da playlist digitado
     String nomePlaylist = txt_nome_playlist.getText().trim();
 
-    // Verifica se o campo está vazio
+    
     if (nomePlaylist.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Por favor, insira um nome para a playlist.");
         return;
     }
 
     try {
-        // Cria a playlist usando o controller
+        
         controller.criarPlaylist(nomePlaylist);
 
-        // Exibe confirmação
+        
         JOptionPane.showMessageDialog(this, "Playlist criada com sucesso!");
 
         // Limpa o campo de texto
         txt_nome_playlist.setText("");
 
-        // (Opcional) Atualiza ou limpa o painel2 se quiser
+       
         painel2.removeAll();
         painel2.setLayout(new javax.swing.BoxLayout(painel2, javax.swing.BoxLayout.Y_AXIS));
         painel2.add(txt_nome_playlist);
