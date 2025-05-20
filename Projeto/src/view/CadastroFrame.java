@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 public class CadastroFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form CadastroFrame
+     * 
      */
     public CadastroFrame() {
         initComponents();
