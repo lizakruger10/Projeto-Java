@@ -9,10 +9,7 @@ package view;
  * @author Elizabeth
  */
 public class TelaInicialFrame extends javax.swing.JFrame {
-
-    /**
-     * Creates new form TelaInicialFrame
-     */
+    
     public TelaInicialFrame() {
         initComponents();
     }
